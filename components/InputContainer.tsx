@@ -1,3 +1,8 @@
+"use client"
+import { Montserrat } from "next/font/google"
+import {cn } from "@/lib/utils"
+const monsterrat = Montserrat({ weight: '600', subsets: ['latin'] })
+
 interface Errors {
     cardHolderName?: string;
     cardNumber?: string;
@@ -31,7 +36,7 @@ const InputContainer: React.FC<InputContainerProps> = ({
     return ( 
         <div id="inputConainerMobile" className="flex w-[378px] flex-col pt-[50px] pr-[30px]">
             <div className="flex flex-col py-2 pl-7">
-                <div className="my-2">CARDHOLDER NAME</div>
+                <div className={cn("my-2",monsterrat.className)}>CARDHOLDER NAME</div>
                 <input
                     id="CardHolderName"
                     value={cardHolderName}
@@ -42,7 +47,7 @@ const InputContainer: React.FC<InputContainerProps> = ({
                 {errors.cardHolderName && <div className="text-red-500">{errors.cardHolderName}</div>}
             </div>
             <div className="flex flex-col py-2 pl-7">
-                <div className="my-2">CARD NUMBER</div>
+                <div className={cn("my-2",monsterrat.className)}>CARD NUMBER</div>
                 <input
                     id="cardNumber"
                     value={cardNumber}
@@ -53,7 +58,7 @@ const InputContainer: React.FC<InputContainerProps> = ({
                 {errors.cardNumber && <div className="text-red-500">{errors.cardNumber}</div>}
             </div>
             <div className="flex flex-col py-2 pl-7">
-                <div className="flex my-2">EXP. DATE (MM/YY) CVC</div>
+                <div className={cn("my-2",monsterrat.className)}>EXP. DATE (MM/YY) CVC</div>
                 <div className="flex flex-row justify-between">
                     <input
                         id="month"

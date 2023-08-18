@@ -23,6 +23,7 @@ const SmallDesing = () => {
     const [errors, setErrors] = useState<Errors>({});
     const [cardInfo, setCardInfo] = useState({});
     const [confirmed, setConfirmed] = useState<boolean>(false);
+    const [isDataValid, setIsDataValid] = useState<boolean>(false);
 
     const validateAndConfirm = () => {
         const newErrors: Errors = {};
@@ -68,9 +69,21 @@ const SmallDesing = () => {
         }
     
         setErrors(newErrors);
-        if (Object.keys(newErrors).length === 0) {
-            setCardInfo(newCardInfo);
-            setConfirmed(true);
+        if (isDataValid) {
+            // Reset the states to default values when user presses Continue
+            setCardHolderName('');
+            setCardNumber('');
+            setExpMonth('');
+            setExpYear('');
+            setCvc('');
+            setCardInfo({});
+            setIsDataValid(false);
+        } else {
+            // ... (Same as your existing validation logic)
+            if (Object.keys(newErrors).length === 0) {
+                setCardInfo(newCardInfo);
+                setIsDataValid(true);
+            }
         }
         
 
@@ -91,7 +104,7 @@ const SmallDesing = () => {
                     errors={errors}
                 />
             } 
-                <ConfirmButtonContainer onConfirm={validateAndConfirm} />
+                <ConfirmButtonContainer onConfirm={validateAndConfirm} isDataValid={isDataValid} />
             </div>
             
         </React.Fragment>
