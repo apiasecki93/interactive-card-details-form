@@ -22,6 +22,7 @@ module.exports = {
         grayBluee: "#67727e",
         lightGrayy: "#eaecf1",
         verylightGray: "#f5f6fa",
+        // buttonConfirm: '#220930',
         whitee: "#ffffff",
       },
       screens: {

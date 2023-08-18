@@ -1,10 +1,13 @@
 import Image from 'next/image'
-import TextComponent from '@/components/TextComponent'
+import SmallDesing from '@/components/smallDesign'
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24 ">
-      <TextComponent />
+    <main className="  ">
+      <div id="ContainerSmallDesing" className="flex flex-col items-center ">
+        <SmallDesing />
+      </div>
+
     </main>
   )
 }
