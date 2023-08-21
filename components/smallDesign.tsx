@@ -29,13 +29,13 @@ const SmallDesing = () => {
         const newErrors: Errors = {};
         const newCardInfo: any = {};
 
-         // Validate CardHolderName
-         if (!/^[a-zA-Z\s]+$/.test(cardHolderName)) {
+        // Validate CardHolderName
+        if (!/^[a-zA-Z\s]+$/.test(cardHolderName)) {
             newErrors.cardHolderName = 'Please enter a valid name (letters only).';
         } else {
             newCardInfo.cardHolderName = cardHolderName;
         }
-    
+
         // Validate CardNumber
         if (!/^\d{16}$/.test(cardNumber)) {
             if (cardNumber.length !== 16) {
@@ -46,28 +46,28 @@ const SmallDesing = () => {
         } else {
             newCardInfo.cardNumber = cardNumber;
         }
-    
+
         // Validate Month
         if (!/^\d{2}$/.test(expMonth)) {
             newErrors.expMonth = 'Month must be 2 digits.';
         } else {
             newCardInfo.expMonth = expMonth;
         }
-    
+
         // Validate Year
         if (!/^\d{4}$/.test(expYear)) {
             newErrors.expYear = 'Year must be 4 digits.';
         } else {
             newCardInfo.expYear = expYear;
         }
-    
+
         // Validate CVC
         if (!/^\d{3}$/.test(cvc)) {
             newErrors.cvc = 'CVC must be 3 digits.';
         } else {
             newCardInfo.cvc = cvc;
         }
-    
+
         setErrors(newErrors);
         if (isDataValid) {
             // Reset the states to default values when user presses Continue
@@ -85,28 +85,30 @@ const SmallDesing = () => {
                 setIsDataValid(true);
             }
         }
-        
 
-       
+
+
     };
 
     return (
         <React.Fragment>
-            <div id="mainContainerMobile" className="flex flex-col items-center justify-center   ">
+            <div id="mainContainerMobile" className="flex flex-col items-center justify-center mmin:items-start mmin:justify-start mmin:flex-row">
+                
                 <CardContainer cardInfo={cardInfo} />
-                {confirmed ? <ModalThank /> : 
-                <InputContainer 
-                    cardHolderName={cardHolderName} setCardHolderName={setCardHolderName}
-                    cardNumber={cardNumber} setCardNumber={setCardNumber}
-                    expMonth={expMonth} setExpMonth={setExpMonth}
-                    expYear={expYear} setExpYear={setExpYear}
-                    cvc={cvc} setCvc={setCvc}
-                    errors={errors}
-                />
-            } 
-                <ConfirmButtonContainer onConfirm={validateAndConfirm} isDataValid={isDataValid} />
+                <div className="flex flex-col w-full items-center mmin:w-auto mmin:pl-[400px]">  {/* <-- This container groups them */}
+                    {confirmed ? <ModalThank /> :
+                        <InputContainer
+                            cardHolderName={cardHolderName} setCardHolderName={setCardHolderName}
+                            cardNumber={cardNumber} setCardNumber={setCardNumber}
+                            expMonth={expMonth} setExpMonth={setExpMonth}
+                            expYear={expYear} setExpYear={setExpYear}
+                            cvc={cvc} setCvc={setCvc}
+                            errors={errors}
+                        />
+                    }
+                    <ConfirmButtonContainer onConfirm={validateAndConfirm} isDataValid={isDataValid} />
+                </div>
             </div>
-            
         </React.Fragment>
     );
 }

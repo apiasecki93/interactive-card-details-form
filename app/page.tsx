@@ -4,7 +4,7 @@ import SmallDesing from '@/components/smallDesign'
 export default function Home() {
   return (
     <main className="  ">
-      <div id="ContainerSmallDesing" className="flex flex-col items-center ">
+      <div id="ContainerSmallDesing" className="flex flex-col ssm:items-center ">
         <SmallDesing />
       </div>
 

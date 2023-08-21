@@ -34,7 +34,7 @@ const InputContainer: React.FC<InputContainerProps> = ({
     errors
 }) => {
     return ( 
-        <div id="inputConainerMobile" className="flex w-[378px] flex-col pt-[50px] pr-[30px]">
+        <div id="inputConainerMobile" className="flex w-[378px] flex-col pt-[50px] pr-[30px] mmin:pt-[200px] mmin:pr-[30px] ">
             <div className="flex flex-col py-2 pl-7">
                 <div className={cn("my-2",monsterrat.className)}>CARDHOLDER NAME</div>
                 <input
